@@ -1,0 +1,35 @@
+#!/bin/bash
+UNAME=`uname`
+UNAMEM=`uname -m`
+PRO="S0.pro"
+
+source ./setup_qt5 $1
+
+./clean $1
+rm -f Makefile Makefile.Release Makefile.Debug
+rm -f object_script.*
+echo RUN : ${QTROOT}/bin/${QMAKE} ${PRO}
+${QTROOT}/bin/${QMAKE} ${PRO}
+
+case $UNAME in
+	CYGWIN*)
+		chmod 644 Makefile
+		if [ -e Makefile.Release ]; then
+			chmod 644 Makefile.Release
+		fi
+		if [ -e Makefile.Debug ]; then
+			chmod 644 Makefile.Debug
+		fi
+		;;
+	Linux)
+		;;
+	FreeBSD)
+		;;
+	Darwin)
+		;;
+	*)
+		echo "$0 : Not support platform."
+		exit 1;
+		;;
+esac
+echo "$0 : Done."

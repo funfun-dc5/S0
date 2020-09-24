@@ -1,0 +1,52 @@
+#-----------------------------
+# ignore files or directories
+#-----------------------------
+#-----------------------
+# ignore directories
+#-----------------------
+release/
+debug/
+build/
+libs/
+obj/
+# for Sphinx
+doctrees/
+html/
+# for Darwin
+.DS_Store
+*.app/
+# for Coverity Scan
+cov-int/
+# funfun's settings
+kero_keyboard/
+template/
+result/
+jpg/
+#-----------------------
+# ignore source files
+#-----------------------
+src/ui_*.h
+src/moc_*.h
+src/moc_*.cpp
+src/qrc_*.cpp
+#-----------------------
+# ignore files
+#-----------------------
+Makefile
+*.Release
+*.Debug
+*.org
+*.bak
+*.log
+*~
+# for Qt
+build-*/
+*.pro.user
+src/.qmake.*
+src/object_script.*
+# for windows
+*.exe
+*.dll
+# for unix
+*.o
+*.a

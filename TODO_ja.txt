@@ -1,0 +1,37 @@
+
+1) スクリーン全体をキャプチャしてQtの機能でファイルへ落とすだけのバージョン
+
+    [1] QScreen::grabWindow()でQPixmapオブジェクトを取得する。
+
+    [2] QPixmap::save()でファイルに落とす。
+
+2) JPEGファイルイメージをメモリ上に作成する処理実装(モード5,6用)
+
+    [1] QPixmap::toImage()でQImageオブジェクト(Format_ARGB32_Premultiplied)に変換する。
+
+    [2] QImage::save()で"JPG"を指定してメモリ上にファイルイメージを生成する。
+
+      Ex.)
+        QImage image;
+        QByteArray ba;
+        QBuffer buffer(&ba);
+        buffer.open(QIODevice::WriteOnly);
+        image.save(&buffer, "JPG", 75); // writes image into ba in JPEG format
+
+3) RGB32を生成する処理実装(モード7用)
+
+    [1] QPixmap::toImage()でQImageオブジェクト(Format_ARGB32_Premultiplied)に変換する。
+
+    [2] void convertTo()で必要なフォーマットに自分自身を変換する。
+
+    [3] QImage::bits()でピクセル情報(RGB)を取得する。
+
+4) VP8データを生成する処理実装
+
+    [1] ピクセル情報(RGB)からYUVに変換する。
+
+    [2] VP8のエンコーダにYUVデータを渡してVP8データを取得する。
+
+      1. 最初にキーフレーム(KF)を指定して全画面をエンコードしたデータを生成する。
+
+      2. 次のフレーム以降は最初のフレームからの差分としてエンコードしたデータを生成する。

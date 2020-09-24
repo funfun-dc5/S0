@@ -1,0 +1,40 @@
+#!/bin/bash
+APP="S0"
+
+case $UNAME in
+	CYGWIN*)
+		if [ "$1" = "" ] ; then
+			mingw32-make clean
+			# delete executable file
+			rm -f release/${APP}.exe debug/${APP}.exe
+		fi
+		if [ "$1" = "cygwin" ] ; then
+			make clean
+			# delete executable file
+			rm -f ${APP}.exe
+		fi
+		;;
+	Linux)
+		make clean
+		# delete executable file
+		rm -f ${APP}
+		;;
+	FreeBSD)
+		make clean
+		# delete executable file
+		rm -f ${APP}
+		;;
+	Darwin)
+		make clean
+		# delete executable file
+		rm -rf ${APP}.app
+		;;
+	*)
+		echo "clean : Not support platform. $UNAME"
+		exit 1;
+		;;
+esac
+
+echo "$0 : Done."
+
+rm -f ${APP}.log
