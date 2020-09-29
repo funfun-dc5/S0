@@ -31,9 +31,8 @@ SOURCES += main.cpp
 HEADERS += server.h
 SOURCES += server.cpp
 
-#INCLUDEPATH += ../libs/vpx
-#LIBS += -L../libs/vpx
-#LIBS += -lvpx_mingw73_x64
+#INCLUDEPATH += ../libs/vpx/include
+#LIBS += -L../libs/vpx/$$BUILDARCH -lvpx
 
 HEADERS += rgb2yuv/rgb2yuv.h
 SOURCES += rgb2yuv/rgb2yuv.cpp
