@@ -29,7 +29,7 @@ RC_FILE = resource/S0.rc
 SOURCES += main.cpp
 
 HEADERS += server.h
-SOURCES += server.cpp
+SOURCES += server.cpp server_test.cpp
 
 #INCLUDEPATH += ../libs/vpx/include
 #LIBS += -L../libs/vpx/$$BUILDARCH -lvpx
